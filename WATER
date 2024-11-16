@@ -1,0 +1,25 @@
+def water_jug_solver(jug1, jug2, target):
+    # Base case: if the target is greater than both jugs, it's impossible
+    if target > max(jug1, jug2):
+        return False
+    
+    # Base case: if target is directly achievable
+    if target % gcd(jug1, jug2) == 0:
+        return True
+    return False
+
+# Helper function to calculate gcd
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+# Example usage
+jug1 = 4
+jug2 = 3
+target = 2
+
+if water_jug_solver(jug1, jug2, target):
+    print("Solution is possible")
+else:
+    print("Solution is not possible")
